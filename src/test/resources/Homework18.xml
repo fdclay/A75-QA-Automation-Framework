@@ -6,7 +6,7 @@
     <test name="Example Test" preserve-order="false">
         <classes>
             <class name="Homework18"/>
-            <include name="naviagionURL";
+            <include name="naviagionURL"/>;
         </classes>
     </test>
 </suite>
