@@ -98,4 +98,15 @@ public class BaseTest {
         searchField.clear();
         searchField.sendKeys(song);
     }
+    public void playnextSong() {
+        WebElement nextSong = driver.findElement(By.xpath("//*[@id=\"mainFooter\"]/div[1]/i[2]"));
+        nextSong.click();
+    }
+    public void clickPause() {
+        WebElement pauseSong = driver.findElement(By.xpath("//*[@id=\"mainFooter\"]/div[1]/span/span[2]/i"));
+        pauseSong.click();
+    }
+
+
+
 }
