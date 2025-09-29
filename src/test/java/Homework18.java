@@ -18,8 +18,6 @@ public class Homework18 extends BaseTest{
         Thread.sleep(2000);
         clickAddToBtn();
         Thread.sleep(2000);
-        // createPlaylist("17SongList");
-        // clickSaveBtn();
         choosePlaylist();
         Thread.sleep(5000);
         Assert.assertEquals(getAddToPlaylistSuccessMsg(),ExpectedString);
