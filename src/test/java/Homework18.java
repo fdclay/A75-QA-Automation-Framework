@@ -1,3 +1,5 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -25,6 +27,11 @@ public class Homework18 extends BaseTest{
         playnextSong();
         Thread.sleep(5000);
         clickPause();
+        Assert.assertFalse(isSongPlaying());
 
+    }
+    public boolean isSongPlaying() {
+        WebElement soundBar = driver.findElement(By.xpath("//div[@data-testid='sound-bar-play']"));
+        return soundBar.isDisplayed();
     }
 }
