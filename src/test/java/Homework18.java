@@ -7,7 +7,7 @@ public class Homework18 extends BaseTest{
     @Test
     public void playSong() throws InterruptedException{
         String ExpectedString = "Added 1 song into \"Test Pro Playlist.\"";
-        naviagionURL();
+        naviagionURL("https://qa.koel.app/");
         provideEmail("felicia.clay@testpro.io");
         providePassword("ACw0FWOe");
         clickSubmitBtn();

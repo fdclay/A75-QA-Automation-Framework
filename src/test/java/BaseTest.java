@@ -8,30 +8,35 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
 
 import java.time.Duration;
 
 public class BaseTest {
     public WebDriver driver;
     public String url;
+
     @BeforeSuite
     static void setupClass() {
         WebDriverManager.chromedriver().setup();
     }
 
-@BeforeMethod
-    public void setupBrowser(){
+    @BeforeMethod
+    @Parameters({"BaseURL"})
+    public void setupBrowser(String baseURL) {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         //preconditions
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
-        naviagionURL();
+        url = baseURL;
+        naviagionURL(url);
 
     }
+
     @AfterMethod
-    public void tearDown(){
+    public void tearDown() {
         driver.quit();
     }
 
@@ -40,7 +45,7 @@ public class BaseTest {
         submitBtn.click();
     }
 
-        public void providePassword(String password) {
+    public void providePassword(String password) {
         WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
         passwordField.clear();
         passwordField.sendKeys(password);
@@ -51,9 +56,10 @@ public class BaseTest {
         emailField.clear();
         emailField.sendKeys(email);
     }
-    public void naviagionURL(){
-        url = "https://qa.koel.app/";
-        driver.get(url);
+
+    public void naviagionURL(String URL) {
+        //url = "https://qa.koel.app/";
+        driver.get(URL);
     }
 
     public String getAddToPlaylistSuccessMsg() {
@@ -74,10 +80,12 @@ public class BaseTest {
         newplaylist.clear();
         newplaylist.sendKeys(newlist);
     }
+
     public void clickSaveBtn() {
         WebElement saveBtn = driver.findElement(By.xpath("//*[@id=\"songsWrapper\"]/header/div[3]/div/section[2]/form/button"));
         saveBtn.click();
     }
+
     public void clickAddToBtn() {
         WebElement addToBtn = driver.findElement(By.xpath("//section[@id='songResultsWrapper']//button[@class='btn-add-to']"));
         addToBtn.click();
@@ -98,15 +106,30 @@ public class BaseTest {
         searchField.clear();
         searchField.sendKeys(song);
     }
+
     public void playnextSong() {
         WebElement nextSong = driver.findElement(By.xpath("//*[@id=\"mainFooter\"]/div[1]/i[2]"));
         nextSong.click();
     }
+
     public void clickPause() {
         WebElement pauseSong = driver.findElement(By.xpath("//*[@id=\"mainFooter\"]/div[1]/span/span[2]/i"));
         pauseSong.click();
     }
 
+    public void clickDeletePlaylistBtn() {
+        WebElement deletePlaylist = driver.findElement(By.xpath("//*[@id=\"playlistWrapper\"]/header/div[3]/span/button[2]"));
+        deletePlaylist.click();
+    }
 
+    public void clickOkBtn() {
+        WebElement OkBtn = driver.findElement(By.xpath("/html/body/div[2]/div/div/nav/button[2]"));
+        OkBtn.click();
+    }
+
+    public String getDeletePlaylistSuccessMsg() {
+        WebElement notification = driver.findElement(By.cssSelector("div.success.show"));
+        return notification.getText();
+    }
 
 }

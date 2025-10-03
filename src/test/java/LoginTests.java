@@ -24,4 +24,26 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(driver.getCurrentUrl(), url);
         driver.quit();
     }
+    @Test
+    public void incorrectEmailCorrectPassword() throws InterruptedException {
+        //opening URL
+        provideEmail("incorrect@testpro.io");
+        providePassword("ACw0FWOe");
+        clickSubmitBtn();
+        Thread.sleep(2000);
+
+        //Expected Result
+        Assert.assertEquals(driver.getCurrentUrl(), url);
+    }
+    @Test
+    public void incorrectDataTest(String email , String password) throws InterruptedException{
+
+        provideEmail(email);
+        providePassword(password);
+        clickSubmitBtn();
+        Thread.sleep(2000);
+
+        //Expected Result
+        Assert.assertEquals(driver.getCurrentUrl(),url);
+    }
 }

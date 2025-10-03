@@ -11,7 +11,7 @@ public class Homework17 extends BaseTest {
     public void addSongToPlaylist() throws InterruptedException{
        // String ExpectedString = "Added 1 song into \"Test Pro Playlist.\"";
         String ExpectedString = "Added 1 song into \"Test Pro Playlist.\"";
-        naviagionURL();
+        naviagionURL("https://qa.koel.app/");
         provideEmail("felicia.clay@testpro.io");
         providePassword("ACw0FWOe");
         clickSubmitBtn();
