@@ -9,8 +9,7 @@ public class Homework19 extends BaseTest{
         provideEmail("felicia.clay@testpro.io");
         providePassword("ACw0FWOe");
         clickSubmitBtn();
-        Thread.sleep(2000);
-        choosePlaylist();
+        openPlaylist();
         clickDeletePlaylistBtn();
         clickOkBtn();
         Assert.assertEquals(getDeletePlaylistSuccessMsg(),ExpectedString);

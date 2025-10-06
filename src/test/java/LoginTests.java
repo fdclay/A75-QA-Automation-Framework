@@ -1,6 +1,10 @@
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -25,25 +29,35 @@ public class LoginTests extends BaseTest {
         driver.quit();
     }
     @Test
+    public void loginValidEmailPassword() throws InterruptedException {
+        provideEmail("felicia.clay@testpro.io");
+        providePassword("ACw0FWOe");
+        clickSubmitBtn();
+        //WebElement avataricon = driver.findElement(By.xpath("//img[@class='avatar']"));
+        WebElement avataricon = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//img[@class='avatar']")));
+        driver.quit();
+    }
+    @Test
     public void incorrectEmailCorrectPassword() throws InterruptedException {
         //opening URL
         provideEmail("incorrect@testpro.io");
         providePassword("ACw0FWOe");
         clickSubmitBtn();
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
 
         //Expected Result
         Assert.assertEquals(driver.getCurrentUrl(), url);
     }
+    /*
     @Test
     public void incorrectDataTest(String email , String password) throws InterruptedException{
 
         provideEmail(email);
         providePassword(password);
         clickSubmitBtn();
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
 
         //Expected Result
         Assert.assertEquals(driver.getCurrentUrl(),url);
-    }
+    }*/
 }

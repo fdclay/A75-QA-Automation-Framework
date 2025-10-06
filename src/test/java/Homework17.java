@@ -15,19 +15,19 @@ public class Homework17 extends BaseTest {
         provideEmail("felicia.clay@testpro.io");
         providePassword("ACw0FWOe");
         clickSubmitBtn();
-        Thread.sleep(2000);
+       // Thread.sleep(2000);
         searchSong("HoliznaCCO");
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
         clickViewALLBtn();
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
         selectFirstSong();
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
         clickAddToBtn();
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
        // createPlaylist("17SongList");
        // clickSaveBtn();
         choosePlaylist();
-        Thread.sleep(5000);
+        //Thread.sleep(5000);
         Assert.assertEquals(getAddToPlaylistSuccessMsg(),ExpectedString);
 
 

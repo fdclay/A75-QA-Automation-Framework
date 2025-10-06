@@ -1,5 +1,6 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -11,27 +12,27 @@ public class Homework18 extends BaseTest{
         provideEmail("felicia.clay@testpro.io");
         providePassword("ACw0FWOe");
         clickSubmitBtn();
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
         searchSong("HoliznaCCO");
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
         clickViewALLBtn();
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
         selectFirstSong();
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
         clickAddToBtn();
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
         choosePlaylist();
-        Thread.sleep(5000);
+        //Thread.sleep(5000);
         Assert.assertEquals(getAddToPlaylistSuccessMsg(),ExpectedString);
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
         playnextSong();
-        Thread.sleep(5000);
+        //Thread.sleep(5000);
         clickPause();
         Assert.assertFalse(isSongPlaying());
 
     }
     public boolean isSongPlaying() {
-        WebElement soundBar = driver.findElement(By.xpath("//div[@data-testid='sound-bar-play']"));
+        WebElement soundBar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-testid='sound-bar-play']")));
         return soundBar.isDisplayed();
     }
 }
