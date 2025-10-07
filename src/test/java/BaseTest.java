@@ -1,6 +1,7 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 //import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -47,7 +48,6 @@ public class BaseTest {
                 .withTimeout(Duration.ofSeconds(10))
                 .pollingEvery(Duration.ofSeconds(2))
                 .ignoring(Exception.class);
-        actions = new Actions(driver);
 
     }
 
@@ -96,6 +96,23 @@ public class BaseTest {
         WebElement emptyPlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(3)")));
         emptyPlaylist.click();
     }
+
+    public void rightclickPlaylist() {
+        WebElement rightclickList = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(3)")));
+        actions.contextClick(rightclickList).perform();
+    }
+
+    public void clickEditPlaylist() {
+        WebElement editList = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"playlists\"]/ul/li[3]/nav/ul/li[1]")));
+        actions.click(editList).perform();
+    }
+
+    public void enterList() {
+        WebElement renameList = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@name='name']")));
+        renameList.sendKeys(Keys.chord("2", (Keys.COMMAND), Keys.BACK_SPACE));
+        renameList.sendKeys(Keys.ENTER);
+    }
+
 
     public void createPlaylist(String newlist) {
         WebElement newplaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"songsWrapper\"]/header/div[3]/div/section[2]/form/input")));
@@ -150,6 +167,11 @@ public class BaseTest {
     }
 
     public String getDeletePlaylistSuccessMsg() {
+        WebElement notification = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
+        return notification.getText();
+    }
+
+    public String getRenamePlaylistSuccessMsg() {
         WebElement notification = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
         return notification.getText();
     }
