@@ -19,11 +19,11 @@ import org.testng.annotations.Parameters;
 import java.time.Duration;
 
 public class BaseTest {
-    public WebDriver driver;
+    public static WebDriver driver = null;
     Wait<WebDriver> fluentWait;
-    Actions actions;
-    public String url;
-    WebDriverWait wait;
+    public static Actions actions = null;
+    public static String url = null;
+    public static WebDriverWait wait = null;
 
 
     @BeforeSuite
@@ -159,6 +159,11 @@ public class BaseTest {
     public void clickDeletePlaylistBtn() {
         WebElement deletePlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"playlistWrapper\"]/header/div[3]/span/button[2]")));
         deletePlaylist.click();
+    }
+
+    public void clickDelPlaylistBtn() {
+        WebElement delemptyPlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"playlistWrapper\"]/header/div[3]/span/button")));
+        delemptyPlaylist.click();
     }
 
     public void clickOkBtn() {

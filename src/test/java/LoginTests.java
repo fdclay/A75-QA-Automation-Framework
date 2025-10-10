@@ -7,11 +7,13 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pom.HomePage;
+import pom.LoginPage;
 
 import java.time.Duration;
 
 public class LoginTests extends BaseTest {
-    @Test
+
     public void loginEmptyEmailPassword() {
 
 //      Added ChromeOptions argument below to fix websocket error
@@ -30,19 +32,25 @@ public class LoginTests extends BaseTest {
     }
     @Test
     public void loginValidEmailPassword() throws InterruptedException {
-        provideEmail("felicia.clay@testpro.io");
-        providePassword("ACw0FWOe");
-        clickSubmitBtn();
-        //WebElement avataricon = driver.findElement(By.xpath("//img[@class='avatar']"));
-        WebElement avataricon = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//img[@class='avatar']")));
-        driver.quit();
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+
+        loginPage.provideEmail("felicia.clay@testpro.io");
+        loginPage.providePassword("ACw0FWOe");
+        loginPage.clickSubmit();
+        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+        //WebElement avataricon = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//img[@class='avatar']")));
+        //driver.quit();
     }
     @Test
     public void incorrectEmailCorrectPassword() throws InterruptedException {
         //opening URL
-        provideEmail("incorrect@testpro.io");
-        providePassword("ACw0FWOe");
-        clickSubmitBtn();
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+
+        loginPage.provideEmail("incorrect@testpro.io");
+        loginPage.providePassword("ACw0FWOe");
+        loginPage.clickSubmit();
         //Thread.sleep(2000);
 
         //Expected Result
