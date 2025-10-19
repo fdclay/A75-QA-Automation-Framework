@@ -6,7 +6,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
@@ -37,7 +41,9 @@ public class BaseTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         //preconditions
-        driver = new ChromeDriver(options);
+       // driver = new ChromeDriver(options);
+        driver = pickBrowser(System.getProperty("browser"));
+
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize();
@@ -58,7 +64,7 @@ public class BaseTest {
 
     public void clickSubmitBtn() {
         WebElement submitBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[type='submit']")));
-        //WebElement submitBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[type='submit']")));
+       // WebElement submitBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[type='submit']")));
         submitBtn.click();
     }
 
@@ -112,7 +118,6 @@ public class BaseTest {
         renameList.sendKeys(Keys.chord("2", (Keys.COMMAND), Keys.BACK_SPACE));
         renameList.sendKeys(Keys.ENTER);
     }
-
 
     public void createPlaylist(String newlist) {
         WebElement newplaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"songsWrapper\"]/header/div[3]/div/section[2]/form/input")));
@@ -180,5 +185,25 @@ public class BaseTest {
         WebElement notification = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
         return notification.getText();
     }
-
+    public static WebDriver pickBrowser (String browser) {
+        switch (browser) {
+            case "firefox":
+                WebDriverManager.firefoxdriver().setup();
+                return driver = new FirefoxDriver();
+            case "safari":
+                WebDriverManager.safaridriver().setup();
+                return driver = new SafariDriver();
+            case "edge":
+                WebDriverManager.edgedriver().setup();
+                return driver = new EdgeDriver();
+            case "Explorer":
+                WebDriverManager.iedriver().setup();
+                return driver = new InternetExplorerDriver();
+            default:
+                WebDriverManager.chromedriver().setup();
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("--remote-allow-origins=*");
+                return driver = new ChromeDriver(chromeOptions);
+        }
+    }
 }
