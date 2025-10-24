@@ -18,10 +18,34 @@ public class BasePage {
         driver = givenDriver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         actions = new Actions(driver);
+        AllSongsPage allSongs = new AllSongsPage(driver);
     }
 
     public WebElement findElement(By locator) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
+    public void click (By locator) {
+
+       findElement(locator).click();
+    }
+
+    /*public WebElement doubleClick(By locator) {
+        actions.doubleClick(findElement(locator)).perform();
+    }
+    public void chooseAllSongsList() {
+        click(allSongsList);
+    }
+    public void isSongPlaying() {
+        return findElement(soundBarVisualizer).isDisplayed();
+    }
+    public WebElement doubleClick(By locator) {
+        actions.doubleClick(findElement(locator)).perform();
+    }
+    public WebElement rightClick(By locator) {
+        actions.contextClick(findElement(locator)).perform();
+    }
+    public void hoverPlay(By locator) {
+        actions.moveToElement(findElement(locator)).perform();
+    }*/
 
 }

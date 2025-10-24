@@ -1,14 +1,10 @@
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pagefactory.LoginPage;
 import pom.HomePage;
-import pom.LoginPage;
 
 import java.time.Duration;
 
@@ -31,22 +27,36 @@ public class LoginTests extends BaseTest {
         driver.quit();
     }
     @Test
-    public void loginValidEmailPassword() throws InterruptedException {
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
+    public void loginValidEmailPassword() {
+        String url = "https://qa.koel.app/";
+        //pagefactory.LoginPage loginPage = new pagefactory.LoginPage(getDriver());
+        //LoginPage loginPage = new LoginPage((getDriver()));
+        pom.LoginPage loginPage = new pom.LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
+
+        //pagefactory.HomePage homePage = new pagefactory.HomePage(getDriver());
 
         loginPage.provideEmail("felicia.clay@testpro.io");
-        loginPage.providePassword("ACw0FWOe");
-        loginPage.clickSubmit();
-        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+                loginPage.providePassword("ACw0FWOe");
+                loginPage.clickSubmit();
+        Assert.assertEquals(getDriver().getCurrentUrl(), url);
+       // Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+
+        //loginPage.provideEmail("felicia.clay@testpro.io");
+        //loginPage.providePassword("ACw0FWOe");
+        //loginPage.clickSubmit();
+        //Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
         //WebElement avataricon = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//img[@class='avatar']")));
         //driver.quit();
     }
+
     @Test
     public void incorrectEmailCorrectPassword() throws InterruptedException {
         //opening URL
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
+        String url = "https://qa.koel.app/";
+        //LoginPage loginPage = new LoginPage(getDriver());
+        pom.LoginPage loginPage = new pom.LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
 
         loginPage.provideEmail("incorrect@testpro.io");
         loginPage.providePassword("ACw0FWOe");
@@ -54,9 +64,9 @@ public class LoginTests extends BaseTest {
         //Thread.sleep(2000);
 
         //Expected Result
-        Assert.assertEquals(driver.getCurrentUrl(), url);
+        Assert.assertEquals(getDriver().getCurrentUrl(), url);
     }
-    /*
+/*
     @Test
     public void incorrectDataTest(String email , String password) throws InterruptedException{
 

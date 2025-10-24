@@ -2,6 +2,8 @@ package pom;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePage {
 
@@ -9,9 +11,7 @@ public class LoginPage extends BasePage {
         super(givenDriver);
     }
     By emailField = By.cssSelector("input[type='email']");
-
     By passwordField = By.cssSelector("input[type='password']");
-
     By submitBtn = By.cssSelector("button[type='submit']");
 
     public void provideEmail(String email) {
@@ -24,6 +24,7 @@ public class LoginPage extends BasePage {
 
     public void clickSubmit() {
         findElement(submitBtn).click();
+
     }
 
     public void login() {
