@@ -3,30 +3,31 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pom.HomePage;
+import pom.LoginPage;
 
 public class Homework18 extends BaseTest{
     @Test
     public void playSong() throws InterruptedException{
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+
         String ExpectedString = "Added 1 song into \"Test Pro Playlist.\"";
         naviagionURL("https://qa.koel.app/");
-        provideEmail("felicia.clay@testpro.io");
-        providePassword("ACw0FWOe");
-        clickSubmitBtn();
-        //Thread.sleep(2000);
+
+        loginPage.provideEmail("felicia.clay@testpro.io");
+        loginPage.providePassword("ACw0FWOe");
+        loginPage.clickSubmit();
+
         searchSong("HoliznaCCO");
-        //Thread.sleep(2000);
         clickViewALLBtn();
-        //Thread.sleep(2000);
         selectFirstSong();
-        //Thread.sleep(2000);
         clickAddToBtn();
-        //Thread.sleep(2000);
         choosePlaylist();
-        //Thread.sleep(5000);
         Assert.assertEquals(getAddToPlaylistSuccessMsg(),ExpectedString);
-        //Thread.sleep(2000);
+
         playnextSong();
-        //Thread.sleep(5000);
+
         clickPause();
         Assert.assertFalse(isSongPlaying());
 
