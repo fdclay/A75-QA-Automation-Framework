@@ -34,8 +34,8 @@ public class LoginStepDefinition {
         WebDriverManager.chromiumdriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disabled-notification");
-        options.addArguments("--remote-allow-origines=*");
-        ChromeDriver driver = new ChromeDriver(options);
+        options.addArguments("--remote-allow-origins=*");
+        driver = new ChromeDriver(options);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
@@ -71,8 +71,6 @@ public class LoginStepDefinition {
         HomePage homePage = new HomePage(driver);
         homePage.getUserAvatar();
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
-
-
         //Assert.assertTrue(wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img.avatar"))).isDisplayed());
     }
 

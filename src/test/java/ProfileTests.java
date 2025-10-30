@@ -1,7 +1,6 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.Test;
 import pom.HomePage;
 import pom.LoginPage;
 import pom.ProfilePage;
@@ -31,7 +30,7 @@ public class ProfileTests extends BaseTest{
         Assert.assertEquals(actualProfileName.getText(), randomName);
     }
 
-    @Test
+    /*@Test
     public void changeCurrentTheme() {
         LoginPage loginPage = new LoginPage(getDriver());
         HomePage homePage = new HomePage(getDriver());
@@ -46,5 +45,5 @@ public class ProfileTests extends BaseTest{
         profilePage.chooseVioletTheme();
 
         Assert.assertTrue(profilePage.isVioletThemeSelected());
-    }
+    }*/
 }

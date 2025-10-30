@@ -31,10 +31,10 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public class BaseTest {
-    public static WebDriver driver = null;
+    public WebDriver driver = null;
     Wait<WebDriver> fluentWait;
     public static Actions actions = null;
-    public static String url = null;
+    public String url = null;
     public static WebDriverWait wait = null;
 
     private static final ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();
@@ -52,14 +52,17 @@ public class BaseTest {
     @Parameters({"BaseURL"})
 
     //parallel execution
-    public void setupBrowser(String baseURL) throws MalformedURLException {
+    public void setupBrowser(String BaseURL) throws MalformedURLException {
+
         threadDriver.set(pickBrowser(System.getProperty("browser")));
+
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
         wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         getDriver().manage().window().maximize();
 
         actions = new Actions(getDriver());
-        url = baseURL;
+        url = BaseURL;
         naviagionURL(url);
 
 
@@ -140,6 +143,7 @@ public class BaseTest {
 
     public void naviagionURL(String URL) {
         //url = "https://qa.koel.app/";
+        URL = "https://qa.koel.app/";
         //driver.get(URL);
         getDriver().get(URL);
     }
@@ -244,7 +248,7 @@ public class BaseTest {
         WebElement notification = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
         return notification.getText();
     }
-    public WebDriver pickBrowser (String browser) throws MalformedURLException{
+    public WebDriver pickBrowser(String browser) throws MalformedURLException{
         DesiredCapabilities caps = new DesiredCapabilities();
         String gridUrl = "http://192.168.100.137:4444/";
 
@@ -302,4 +306,4 @@ public class BaseTest {
 
         return new RemoteWebDriver(new URL(hubURL), browserOptions);
     }
-}
+    }

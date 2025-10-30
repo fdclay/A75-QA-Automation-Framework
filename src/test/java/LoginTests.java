@@ -3,7 +3,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pagefactory.LoginPage;
 import pom.HomePage;
 
 import java.time.Duration;
@@ -25,6 +24,10 @@ public class LoginTests extends BaseTest {
         driver.get(url);
         Assert.assertEquals(driver.getCurrentUrl(), url);
         driver.quit();
+
+        /*driver.get(url);
+        Assert.assertEquals(driver.getCurrentUrl(), url);
+        driver.quit();*/
     }
     @Test
     public void loginValidEmailPassword() {
@@ -40,6 +43,7 @@ public class LoginTests extends BaseTest {
                 loginPage.providePassword("ACw0FWOe");
                 loginPage.clickSubmit();
         Assert.assertEquals(getDriver().getCurrentUrl(), url);
+        driver.quit();
        // Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
 
         //loginPage.provideEmail("felicia.clay@testpro.io");
@@ -65,6 +69,7 @@ public class LoginTests extends BaseTest {
 
         //Expected Result
         Assert.assertEquals(getDriver().getCurrentUrl(), url);
+        getDriver().quit();
     }
 /*
     @Test

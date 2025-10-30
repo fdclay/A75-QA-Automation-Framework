@@ -1,7 +1,7 @@
 Feature: Login Feature
   #this is for comments
 
-  #Scenario:
+ # Scenario:
     Given I open browser
     And I open Login page
     When I enter email "felicia.clay@testpro.io"
@@ -17,10 +17,10 @@ Feature: Login Feature
     And I submit
     Then I am logged in
     Examples:
-      | Email                   | Password  |
-      | felicia.clay@testpro.io | ACw0FWOe  |
-      | demo@testpro.io         | ACw0FWOe  |
-      | felicia.clay@testpro.io | demotest  |
-      | felicia.clay@testpro.io |           |
-      |                         | ACw0FWOe  |
+      |Email                   |Password  |
+      |felicia.clay@testpro.io |ACw0FWOe  |
+      |demo@testpro.io         |ACw0FWOe  |
+      |felicia.clay@testpro.io |demotest  |
+      |felicia.clay@testpro.io |          |
+      |                        |ACw0FWOe  |
 
