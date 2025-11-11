@@ -24,7 +24,6 @@ public class LoginPage extends BasePage {
 
     public void clickSubmit() {
         findElement(submitBtn).click();
-
     }
 
     public void login() {

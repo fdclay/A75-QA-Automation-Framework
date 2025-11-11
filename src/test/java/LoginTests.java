@@ -71,16 +71,16 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(getDriver().getCurrentUrl(), url);
         getDriver().quit();
     }
-/*
-    @Test
+
+    @Test(dataProvider = "IncorrectLoginData", dataProviderClass = DataProvid.class)
     public void incorrectDataTest(String email , String password) throws InterruptedException{
 
         provideEmail(email);
         providePassword(password);
         clickSubmitBtn();
-        //Thread.sleep(2000);
+        Thread.sleep(2000);
 
         //Expected Result
         Assert.assertEquals(driver.getCurrentUrl(),url);
-    }*/
+    }
 }
