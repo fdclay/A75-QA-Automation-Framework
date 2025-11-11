@@ -1,6 +1,6 @@
 Feature: Logout Feature
 
-  Scenario Outline:
+  Scenario Logout:
     Given I open browser
     And I open Login page
     When I enter email "felicia.clay@testpro.io"
