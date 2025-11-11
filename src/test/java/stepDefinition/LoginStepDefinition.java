@@ -258,4 +258,19 @@ public class LoginStepDefinition {
     }
 
 
+    @And("I Logout")
+    public void iLogout() {
+        // Write code here that turns the phrase above into concrete actions
+        BasePage basePage = new BasePage(driver);
+        basePage.clickLogout();
+        //throw new PendingException();
+    }
+
+    @Then("Login Page is displayed")
+    public void loginPageIsDisplayed() {
+        // Write code here that turns the phrase above into concrete actions
+        HomePage homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.getLoginAvatar().isDisplayed());
+        //throw new PendingException();
+    }
 }

@@ -11,6 +11,7 @@ public class HomePage extends BasePage {
     }
 
     //By userAvatarIcon = By.cssSelector("img.avatar");
+    By loginIcon = By.xpath("//*[@id='app']/div/div/form/div[1]/img");
     By userAvatarIcon = By.xpath ("//*[@id=\"userBadge\"]/a[1]/img");
     By renamePlaylistSuccessMsg = By.cssSelector("div.success.show");
     By firstPlaylist = By.cssSelector(".playlist:nth-child(3)");
@@ -29,6 +30,10 @@ public class HomePage extends BasePage {
 
     public WebElement getUserAvatar() {
         return findElement(userAvatarIcon);
+    }
+
+    public WebElement getLoginAvatar() {
+        return findElement(loginIcon);
     }
 
     public String getRenamePlaylistSuccessMsg() {

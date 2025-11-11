@@ -20,11 +20,17 @@ public class BasePage {
         actions = new Actions(driver);
     }
 
+    By LogoutBtn = By.xpath("//*[@id='userBadge']/a[2]");
+
     public WebElement findElement(By locator) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
     public void click (By locator) {
        findElement(locator).click();
+    }
+
+    public void clickLogout(){
+        findElement(LogoutBtn).click();
     }
 
     public WebElement doubleClick(By locator) {
