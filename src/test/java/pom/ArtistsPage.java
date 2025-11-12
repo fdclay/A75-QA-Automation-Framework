@@ -8,8 +8,14 @@ public class ArtistsPage extends BasePage{
         super(givenDriver);
     }
     By ArtistMsg = By.xpath("//*[@id='artistsWrapper']/header/div[2]/h1");
-    //*[@id="artistsWrapper"]/header/div[2]/h1
+    By firstArtist = By.xpath("//*[@id='artistsWrapper']/div/article[1]/span");
+
     public String getArtistsMsg() {
         return findElement(ArtistMsg).getText();
+    }
+
+    public ArtistsPage choose1stArtist() {
+        click((By) firstArtist);
+        return this;
     }
 }

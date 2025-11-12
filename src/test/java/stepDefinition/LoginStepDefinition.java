@@ -273,4 +273,88 @@ public class LoginStepDefinition {
         Assert.assertTrue(homePage.getLoginAvatar().isDisplayed());
         //throw new PendingException();
     }
+
+    @And("I play Album")
+    public void iPlayAlbum() {
+        // Write code here that turns the phrase above into concrete actions
+        AlbumsPage albumsPage = new AlbumsPage(driver);
+        albumsPage.choose1stAlbum();
+        //throw new PendingException();
+    }
+
+    @And("I play Artist")
+    public void iPlayArtist() {
+        // Write code here that turns the phrase above into concrete actions
+        ArtistsPage artistsPage = new ArtistsPage(driver);
+        artistsPage.choose1stArtist();
+        //throw new PendingException();
+    }
+
+    @Then("Album is displayed")
+    public void albumIsDisplayed() {
+        // Write code here that turns the phrase above into concrete actions
+        CurrentQPage currentQPage = new CurrentQPage(driver);
+        currentQPage.albumTab();
+        currentQPage.getAlbumName();
+        Assert.assertFalse(currentQPage.getAlbumName().isBlank());
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        //throw new PendingException();
+    }
+
+    @Then("Lyrics is displayed")
+    public void lyricsIsDisplayed() {
+        // Write code here that turns the phrase above into concrete actions
+        CurrentQPage currentQPage = new CurrentQPage(driver);
+        currentQPage.lyricsTab();
+        currentQPage.getLyricsName();
+        Assert.assertFalse(currentQPage.getLyricsName().isBlank());
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        //throw new PendingException();
+    }
+
+    @Then("Artists is displayed")
+    public void artistsIsDisplayed() {
+        // Write code here that turns the phrase above into concrete actions
+        CurrentQPage currentQPage = new CurrentQPage(driver);
+        currentQPage.ArtistsTab();
+        currentQPage.getArtistName();
+        Assert.assertFalse(currentQPage.getArtistName().isBlank());
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        //throw new PendingException();
+    }
+
+    @And("I click Info Button")
+    public void iClickInfoButton() {
+        // Write code here that turns the phrase above into concrete actions
+        CurrentQPage currentQPage = new CurrentQPage(driver);
+        currentQPage.InfoBtn();
+        //throw new PendingException();
+    }
+
+    @Then("Info Panel is displayed")
+    public void infoPanelIsDisplayed() {
+        // Write code here that turns the phrase above into concrete actions
+        CurrentQPage currentQPage = new CurrentQPage(driver);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        //throw new PendingException();
+    }
+
+
+    @And("I shuffle Artist")
+    public void iShuffleArtist() {
+        CurrentQPage currentQPage = new CurrentQPage(driver);
+        currentQPage.ShuffleArtistBtn();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        // Write code here that turns the phrase above into concrete actions
+        //throw new PendingException();
+    }
+
+    @Then("I shuffle Album")
+    public void iShuffleAlbum() {
+        // Write code here that turns the phrase above into concrete actions
+        CurrentQPage currentQPage = new CurrentQPage(driver);
+        currentQPage.ShuffleAlbumBtn();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        //throw new PendingException();
+    }
 }
