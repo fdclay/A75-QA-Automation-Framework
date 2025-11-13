@@ -16,7 +16,8 @@ public class AlbumsPage extends BasePage{
         return findElement(AlbumsMsg).getText();
     }
     public AlbumsPage choose1stAlbum() {
-        click((By) firstAlbum);
+        click(firstAlbum);
+        //doubleClick((By) firstAlbum);
         return this;
     }
 }

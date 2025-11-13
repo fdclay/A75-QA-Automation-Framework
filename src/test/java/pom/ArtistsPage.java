@@ -15,7 +15,8 @@ public class ArtistsPage extends BasePage{
     }
 
     public ArtistsPage choose1stArtist() {
-        click((By) firstArtist);
+        click(firstArtist);
+        //doubleClick((By) firstArtist);
         return this;
     }
 }

@@ -21,5 +21,9 @@ public class AllSongsPage extends BasePage {
     public void choosePlayOption() {
         findElement(playOption).click();
     }
-
+    By ShuffleAllBtn = By.xpath("//*[@id='songsWrapper']/header/div[3]/span/button[1]");
+    //*[@id="songsWrapper"]/header/div[3]/span/button[1]
+    public void ShuffleAllBtn () {
+        actions.click(findElement(ShuffleAllBtn)).perform();
+    }
 }

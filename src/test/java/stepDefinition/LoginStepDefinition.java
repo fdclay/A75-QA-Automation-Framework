@@ -1,7 +1,6 @@
 package stepDefinition;
 
 import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.PendingException;
 import io.cucumber.java.bs.A;
 import io.cucumber.java.en.And;
@@ -29,7 +28,7 @@ public class LoginStepDefinition {
 
 
     @Given("I open browser")
-    //@Before
+
     public void openBrowser(){
         WebDriverManager.chromiumdriver().setup();
         ChromeOptions options = new ChromeOptions();
@@ -354,6 +353,55 @@ public class LoginStepDefinition {
         // Write code here that turns the phrase above into concrete actions
         CurrentQPage currentQPage = new CurrentQPage(driver);
         currentQPage.ShuffleAlbumBtn();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        //throw new PendingException();
+    }
+
+    @And("I display Total Song Count and Duration")
+    public void iDisplayTotalSongCountAndDuration() {
+        // Write code here that turns the phrase above into concrete actions
+        CurrentQPage currentQPage = new CurrentQPage(driver);
+        currentQPage.getTotalCountMin();
+        Assert.assertFalse(currentQPage.getTotalCountMin().isBlank());
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        //throw new PendingException();
+    }
+
+    @And("I display Table Headers")
+    public void iDisplayTableHeaders() {
+        // Write code here that turns the phrase above into concrete actions
+        CurrentQPage currentQPage = new CurrentQPage(driver);
+        currentQPage.getCurrentTableHeader();
+        Assert.assertFalse(currentQPage.getCurrentTableHeader().isBlank());
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        //throw new PendingException();
+    }
+
+    @And("I shuffle All")
+    public void iShuffleAll() {
+        // Write code here that turns the phrase above into concrete actions
+        AllSongsPage allSongsPage = new AllSongsPage(driver);
+        //CurrentQPage currentQPage = new CurrentQPage(driver);
+        allSongsPage.ShuffleAllBtn();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        //throw new PendingException();
+    }
+
+    @And("I Clear All")
+    public void iClearAll() {
+        // Write code here that turns the phrase above into concrete actions
+        CurrentQPage currentQPage = new CurrentQPage(driver);
+        currentQPage.ClearBtn();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        //throw new PendingException();
+    }
+
+    @Then("Current Queue Clear Page is displayed")
+    public void currentQueueClearPageIsDisplayed() {
+        // Write code here that turns the phrase above into concrete actions
+        CurrentQPage currentQPage = new CurrentQPage(driver);
+        currentQPage.getClearPageMsg();
+        Assert.assertTrue(currentQPage.getClearPageMsg().contains("shuffling all songs"));
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         //throw new PendingException();
     }

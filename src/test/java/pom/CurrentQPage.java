@@ -1,11 +1,7 @@
 package pom;
 
-import io.cucumber.java.sl.In;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.testng.Assert;
 
 public class CurrentQPage extends BasePage{
     public CurrentQPage(WebDriver givenDriver) {
@@ -20,7 +16,7 @@ public class CurrentQPage extends BasePage{
     By firstSong = By.xpath("//*[@id='queueWrapper']/div/div/div[1]/table/tr[1]");
 
     public CurrentQPage choose1stSong() {
-        doubleClick((By) firstSong);
+        doubleClick(firstSong);
         return this;
     }
 
@@ -31,13 +27,13 @@ public class CurrentQPage extends BasePage{
 
     By AlbumTab = By.xpath("//*[@id='extraTabAlbum']");
     public CurrentQPage albumTab() {
-        click((By) AlbumTab);
+        click(AlbumTab);
         return this;
     }
 
-    By LyricsTab = By.xpath("//*[@id=\'extraTabLyrics']");
+    By LyricsTab = By.xpath("//*[@id='extraTabLyrics']");
     public CurrentQPage lyricsTab () {
-        click((By) LyricsTab);
+        click(LyricsTab);
         return this;
     }
 
@@ -48,7 +44,7 @@ public class CurrentQPage extends BasePage{
 
     By ArtistsTab = By.xpath("//*[@id='extraTabArtist']");
     public CurrentQPage ArtistsTab () {
-        click((By) ArtistsTab);
+        click(ArtistsTab);
         return this;
     }
     By ArtistName = By.xpath("//*[@id='extraPanelArtist']/article/h1/span");
@@ -58,28 +54,45 @@ public class CurrentQPage extends BasePage{
 
     By InfoBtn = By.xpath("//*[@id='mainFooter']/div[2]/div[2]/div/button[2]");
     public CurrentQPage InfoBtn () {
-        click((By) InfoBtn);
+        click(InfoBtn);
         return this;
     }
 
     By ShuffleArtistBtn = By.xpath("//*[@id='extraPanelArtist']/article/h1/button");
     public CurrentQPage ShuffleArtistBtn () {
-        click((By) ShuffleArtistBtn);
+        click(ShuffleArtistBtn);
         return this;
     }
 
     By ShuffleAlbumBtn = By.xpath("//*[@id='extraPanelAlbum']/article/h1/button");
     public CurrentQPage ShuffleAlbumBtn () {
-        click((By) ShuffleAlbumBtn);
+        click(ShuffleAlbumBtn);
         return this;
     }
+    By getCurrentTableHeader = By.xpath("//*[@id='queueWrapper']/div/table/thead/tr");
+    public String getCurrentTableHeader () {
+        return findElement(getCurrentTableHeader).getText();
+    }
 
-    /*@FindBy(css = "[@id='extra']")
-    WebElement infoPanel;
+    By getTotalCountMin = By.xpath("//*[@id='queueWrapper']/header/div[2]/span/span");
+    public String getTotalCountMin () {
+        return findElement(getTotalCountMin).getText();
+    }
 
-    public boolean isInfoPanelDisplay () {
-        findElement((By) infoPanel);
-        return infoPanel.isDisplayed();
-    }*/
+    By ShuffleAllBtn = By.xpath("//*[@id='queueWrapper']/header/div[3]/span/button[1]");
+    public CurrentQPage ShuffleAllBtn () {
+        click(ShuffleAllBtn);
+        return this;
+    }
+    By ClearBtn = By.xpath("//*[@id='queueWrapper']/header/div[3]/span/button[2]");
+    public CurrentQPage ClearBtn () {
+        click(ClearBtn);
+        return this;
+    }
+    By ClearPageMsg = By.xpath("//*[@id='queueWrapper']/div/div/div/span/a");
+
+    public String getClearPageMsg() {
+        return findElement(ClearPageMsg).getText();
+    }
 
 }
