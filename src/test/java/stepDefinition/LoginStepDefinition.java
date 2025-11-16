@@ -47,10 +47,10 @@ public class LoginStepDefinition {
     @When("I enter email {string}")
     public void iEnterEmail(String email) {
         LoginPage loginPage = new LoginPage(driver);
+       // wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[type]='email']"))).clear();
         loginPage.provideEmail(email);
 
-       /*wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[type]='email']"))).clear();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[type]='email']"))).sendKeys(email);*/
+        //wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[type]='email']"))).sendKeys(email);*/
     }
 
     @And("I enter password {string}")
@@ -403,6 +403,66 @@ public class LoginStepDefinition {
         currentQPage.getClearPageMsg();
         Assert.assertTrue(currentQPage.getClearPageMsg().contains("shuffling all songs"));
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        //throw new PendingException();
+    }
+
+    @And("I enter Name {string}")
+    public void iEnterName(String name) {
+        // Write code here that turns the phrase above into concrete actions
+        ProfilePage profilePage = new ProfilePage(driver);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='inputProfileName']"))).clear();
+        profilePage.provideName(name);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        //throw new PendingException();
+    }
+
+    @And("I enter new email {string}")
+    public void iEnterNewEmail(String email) {
+        ProfilePage profilePage = new ProfilePage(driver);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='inputProfileEmail']"))).clear();
+        profilePage.provideEmail(email);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+    }
+
+    @Then("Home Page is displayed New Name")
+    public void homePageIsDisplayedNewName() {
+        // Write code here that turns the phrase above into concrete actions
+        HomePage homePage = new HomePage(driver);
+        //homePage.getHomeName();
+        Assert.assertTrue(homePage.getHomeName().contains("Felicia"));
+        //throw new PendingException();
+    }
+
+    @And("I click theme")
+    public void iClickTheme() {
+        // Write code here that turns the phrase above into concrete actions
+        ProfilePage profilePage = new ProfilePage(driver);
+        profilePage.chooseVioletTheme();
+        //throw new PendingException();
+    }
+
+    @Then("I check Now Playing")
+    public void iCheckNowPlaying() {
+        // Write code here that turns the phrase above into concrete actions
+        ProfilePage profilePage = new ProfilePage(driver);
+        profilePage.clickShowNow();
+        //throw new PendingException();
+    }
+
+    @Then("I check Confirmation")
+    public void iCheckConfirmation() {
+        // Write code here that turns the phrase above into concrete actions
+        ProfilePage profilePage = new ProfilePage(driver);
+        profilePage.clickConfirm();
+        //throw new PendingException();
+    }
+
+    @Then("I check show translucent")
+    public void iCheckShowTranslucent() {
+        // Write code here that turns the phrase above into concrete actions
+        ProfilePage profilePage = new ProfilePage(driver);
+        profilePage.clickShowTran();
         //throw new PendingException();
     }
 }

@@ -18,9 +18,10 @@ public class HomePage extends BasePage {
     By playlistNameField = By.cssSelector("[name='name']");
     By playButton = By.cssSelector(".fa.fa-bars");
     //By homeName1 = By.cssSelector("[name='How's life, Felicia?']");
-    By homeName = By.xpath("//*[@id='homeWrapper']/header/div[2]");
-//*[@id="homeWrapper"]/header/div[2]/h1
-// *[@id="homeWrapper"]/header/div[2]
+    By homeName = By.xpath("//*[@id='homeWrapper']/header/div[2]/h1");
+
+    //*[@id="homeWrapper"]/header/div[2]/h1
+    // *[@id="homeWrapper"]/header/div[2]
 
     //xpath("//img[@class='avatar']"
 

@@ -112,11 +112,11 @@ Feature: Login Feature
     Given I open browser
     And I open Login page
     When I enter email "felicia.clay@testpro.io"
-    And I enter password "ACw0FWOe#3"
+    And I enter password "ACw0FWOe#4"
     And I submit
     And I open Profile page
     And I enter current password "ACw0FWOe#3"
-    And I enter new password "ACw0FWOe#4"
+    And I enter new password "ACw0FWOe#3"
     And I Save
     And I enter current password "ACw0FWOe#4"
     And I enter new password "ACw0FWOe#3"
