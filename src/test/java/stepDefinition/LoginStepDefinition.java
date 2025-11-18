@@ -425,15 +425,6 @@ public class LoginStepDefinition {
 
     }
 
-    @Then("Home Page is displayed New Name")
-    public void homePageIsDisplayedNewName() {
-        // Write code here that turns the phrase above into concrete actions
-        HomePage homePage = new HomePage(driver);
-        //homePage.getHomeName();
-        Assert.assertTrue(homePage.getHomeName().contains("Felicia"));
-        //throw new PendingException();
-    }
-
     @And("I click theme")
     public void iClickTheme() {
         // Write code here that turns the phrase above into concrete actions
@@ -463,6 +454,142 @@ public class LoginStepDefinition {
         // Write code here that turns the phrase above into concrete actions
         ProfilePage profilePage = new ProfilePage(driver);
         profilePage.clickShowTran();
+        //throw new PendingException();
+    }
+
+    @Then("Recently Played Label is displayed")
+    public void recentlyPlayedLabelIsdisplayed() {
+        // Write code here that turns the phrase above into concrete actions
+        HomePage homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.getRecentlyPlayedLbl().contains("Recently Played"));
+        //throw new PendingException();
+    }
+
+    @Then("View All Button is displayed")
+    public void viewAllButtonIsDisplayed() {
+        // Write code here that turns the phrase above into concrete actions
+        HomePage homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.getViewAll().isDisplayed());
+        //throw new PendingException();
+    }
+
+    @Then("Recently Added Songs is displayed")
+    public void recentlyAddedSongsIsDisplayed() {
+        // Write code here that turns the phrase above into concrete actions
+        HomePage homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.getRecentlyAddedLbl().contains("Recently Added"));
+        //throw new PendingException();
+    }
+
+    @Then("Recently Added Album is displayed")
+    public void recentlyAddedAlbumIsDisplayed() {
+        // Write code here that turns the phrase above into concrete actions
+        HomePage homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.getRecentlyAddedLbl().contains("Recently Added"));
+       //throw new PendingException();
+    }
+
+    @Then("Search field is displayed")
+    public void searchFieldIsDisplayed() {
+        // Write code here that turns the phrase above into concrete actions
+        HomePage homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.getSearchFld().isDisplayed());
+        //throw new PendingException();
+    }
+
+    @And("Most Played Label is displayed")
+    public void mostPlayedLabelIsDisplayed() {
+        // Write code here that turns the phrase above into concrete actions
+        HomePage homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.getMostPlayedLbl().contains("Most Played"));
+        //throw new PendingException();
+    }
+
+    @And("Top Artists is displayed")
+    public void topArtistsIsDisplayed() {
+        // Write code here that turns the phrase above into concrete actions
+        HomePage homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.getTopArtistsLbl().contains("Top Artists"));
+        //throw new PendingException();
+    }
+
+    @And("Top Albums is displayed")
+    public void topAlbumsIsDisplayed() {
+        // Write code here that turns the phrase above into concrete actions
+        HomePage homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.getTopAlbumsLbl().contains("Top Albums"));
+        //throw new PendingException();
+    }
+
+    @And("Playlist Button is displayed")
+    public void playlistButtonIsDisplayed() {
+        // Write code here that turns the phrase above into concrete actions
+        HomePage homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.getPlaylist().isDisplayed());
+        //throw new PendingException();
+    }
+
+    @And("Favorites Label is displayed")
+    public void favoritesLabelIsDisplayed() {
+        // Write code here that turns the phrase above into concrete actions
+        HomePage homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.getFavorites().isDisplayed());
+        //throw new PendingException();
+    }
+
+    @And("Playlist Recently Played Label is displayed")
+    public void playlistRecentlyPlayedLabelIsDisplayed() {
+        // Write code here that turns the phrase above into concrete actions
+        HomePage homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.getplaylistRecentlyplayedBtn().isDisplayed());
+        //throw new PendingException();
+    }
+
+    @And("New Playlist Label is displayed")
+    public void newPlaylistLabelIsDisplayed() {
+        // Write code here that turns the phrase above into concrete actions
+        HomePage homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.getNewPlaylistBtn().isDisplayed());
+        //throw new PendingException();
+    }
+
+    @And("Profile Image is displayed")
+    public void profileImageIsDisplayed() {
+        // Write code here that turns the phrase above into concrete actions
+        HomePage homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.getProfileBtn().isDisplayed());
+        //throw new PendingException();
+    }
+
+    @And("About Image is displayed")
+    public void aboutImageIsDisplayed() {
+        // Write code here that turns the phrase above into concrete actions
+        HomePage homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.getAboutAvatar().isDisplayed());
+        //throw new PendingException();
+    }
+
+    @And("I close About Page")
+    public void iCloseAboutPage() {
+        // Write code here that turns the phrase above into concrete actions
+        HomePage homePage = new HomePage(driver);
+        homePage.clickAboutClose();
+        //throw new PendingException();
+    }
+
+    @And("Logout Image is displayed")
+    public void logoutImageIsDisplayed() {
+        // Write code here that turns the phrase above into concrete actions
+        HomePage homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.getLogoutAvatar().isDisplayed());
+        //throw new PendingException();
+    }
+
+    @And("I open About Page")
+    public void iOpenAboutPage() {
+        // Write code here that turns the phrase above into concrete actions
+        HomePage homePage = new HomePage(driver);
+        homePage.clickAboutBtn();
         //throw new PendingException();
     }
 }
