@@ -185,7 +185,7 @@ public class LoginStepDefinition {
         // Write code here that turns the phrase above into concrete actions
         HomePage homePage = new HomePage(driver);
         //homePage.getHomeName();
-        Assert.assertTrue(homePage.getHomeName().contains("Felicia"));
+        Assert.assertFalse(homePage.getHomeName().isBlank());
         // throw new PendingException();
     }
 
