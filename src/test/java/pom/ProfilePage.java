@@ -89,11 +89,18 @@ public class ProfilePage extends BasePage {
         return selectedVioletTheme.isDisplayed();
     }
 
+    public boolean getNewPwd() {
+        findElement((By) NewPwd);
+        //return findElement(NewPwd).getText();
+        return findElement(NewPwd).isDisplayed();
+    }
+
     public void clickSave() {
         findElement(saveBtn).click();
     }
     public void clickShowNow () {findElement(ShowNowChkbox).click();}
     public void clickConfirm () {findElement(ConfirmChkbox).click();}
     public void clickShowTran () {findElement(ShowTransChkbox).click();}
+
 }
 
