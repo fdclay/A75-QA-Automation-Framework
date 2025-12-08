@@ -91,7 +91,6 @@ public class ProfilePage extends BasePage {
 
     public boolean getNewPwd() {
         findElement((By) NewPwd);
-        //return findElement(NewPwd).getText();
         return findElement(NewPwd).isDisplayed();
     }
 
