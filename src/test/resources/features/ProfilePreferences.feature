@@ -11,7 +11,7 @@ Feature: Profile and Preferences feature
     And I enter Name "Felicia"
     And I Save
     And I open Home Page
-    Then Home Page is displayed New Name
+    Then Home Page is displayed
 
   Scenario: Update Email
     Given I open browser

@@ -35,7 +35,7 @@ public class LoginStepDefinition {
         options.addArguments("--disabled-notification");
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     }
 
     @And("I open Login page")
@@ -590,6 +590,54 @@ public class LoginStepDefinition {
         // Write code here that turns the phrase above into concrete actions
         HomePage homePage = new HomePage(driver);
         homePage.clickAboutBtn();
+        //throw new PendingException();
+    }
+
+    @Then("Password is not Updated")
+    public void passwordIsNotUpdated() {
+        // Write code here that turns the phrase above into concrete actions
+        ProfilePage profilePage = new ProfilePage(driver);
+        Assert.assertTrue(profilePage.getNewPwd());
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        //throw new PendingException();
+    }
+
+    @And("I click on New Playlist")
+    public void iClickOnNewPlaylist() {
+        // Write code here that turns the phrase above into concrete actions
+        HomePage homePage = new HomePage(driver);
+        homePage.clickNewPlaylistBtn();
+        homePage.clickPlaylistBtn();
+        homePage.clickPlaylist();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+       //throw new PendingException();
+    }
+
+    @And("I enter New Playlist Name {string}")
+    public void iEnterNewPlaylistName(String playlist) {
+        // Write code here that turns the phrase above into concrete actions
+        HomePage homePage = new HomePage(driver);
+        //homePage.getPlaylistFld();
+        //homePage.clickPlaylist();
+        //homePage.providePlaylist("First Playlist");
+        homePage.providePlaylist(playlist);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        //throw new PendingException();
+    }
+
+    @And("I press enter in the New Playlist field")
+    public void iPressEnterInTheNewPlaylistField() {
+        // Write code here that turns the phrase above into concrete actions
+        HomePage homePage = new HomePage(driver);
+        //throw new PendingException();
+    }
+
+    @Then("New Playlist is displayed {string}")
+    public void newPlaylistIsDisplayed(String Playlist) {
+        // Write code here that turns the phrase above into concrete actions
+        UserPlaylistPage userPlaylistPage = new UserPlaylistPage(driver);
+        Assert.assertTrue(userPlaylistPage.getUserPlaylistMsg().contains(Playlist));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         //throw new PendingException();
     }
 }

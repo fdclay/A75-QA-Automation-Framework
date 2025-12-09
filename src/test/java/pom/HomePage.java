@@ -1,6 +1,7 @@
 package pom;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -20,6 +21,7 @@ public class HomePage extends BasePage {
     By playButton = By.cssSelector(".fa.fa-bars");
     //By homeName1 = By.cssSelector("[name='How's life, Felicia?']");
     By searchfld = By.xpath("//*[@id='searchForm']/input");
+
     By homeName = By.xpath("//*[@id='homeWrapper']/header");
     //*[@id='homeWrapper']/header/div[2]/h1
     //*[@id="homeWrapper"]/header
@@ -30,9 +32,22 @@ public class HomePage extends BasePage {
     By topArtistsLbl = By.xpath("//*[@id='homeWrapper']/div/section[2]/h1");
     By topAlbumsLbl = By.xpath("//*[@id='homeWrapper']/div/section[3]/h1");
     By newPlaylistBtn = By.xpath("//*[@id='playlists']/h1/i");
+
+    //By newPlayListName = By.cssSelector("input[type='text']");
+    By newPlayList = By.xpath("//*[@id='playlists']/h1/i");
+
+
+    //#playlists > nav > ul > li:nth-child(1)
+    //*[@id="playlists"]/nav/ul/li[1]
+    //*[@id="playlists"]/form/input
+
+    By newPlayListName = By.xpath("//*[@id='playlists']/form/input");
+    By playListfld = By.xpath( "//*[@id='playlists']/nav/ul/li[1]");
+
     By favoritesBtn = By.xpath("//*[@id='playlists']/ul/li[1]/a");
     By playlistRecentlyplayedBtn = By.xpath("//*[@id='playlists']/ul/li[2]/a");
     By playlistNewPlaylistBtn = By.xpath("//*[@id='playlists']/ul/li[3]/a");
+
     By profileBtn = By.xpath("//*[@id='userBadge']/a[1]/span");
     By aboutCloseBtn = By.xpath("//*[@id='mainWrapper']/div/div/footer/button");
     //By aboutCloseBtn = By.cssSelector("[name='Close']");
@@ -67,6 +82,23 @@ public class HomePage extends BasePage {
 
     public void clickAboutClose () {findElement(aboutCloseBtn).click();}
 
+    public void clickNewPlaylistBtn () {findElement(newPlaylistBtn).click();}
+    public void clickPlaylistBtn () {findElement(newPlayList).click();}
+    public void clickPlaylist () {findElement(playListfld).click();}
+    //public WebElement getPlaylistFld () { return findElement(playListfld); }
+
+    public void providePlaylist(String playlist) {
+
+        findElement(newPlayListName).sendKeys(playlist);
+        findElement(newPlayListName).sendKeys(Keys.ENTER);
+
+    }
+
+    public void enterPlaylist () {
+
+    }
+    //public void enterNewPlaylistBtn () {findElement(playListfld).sendKeys(playListfld);}
+
     public WebElement getPlaylist () {
         return findElement(newPlaylistBtn);
     }
@@ -89,6 +121,7 @@ public class HomePage extends BasePage {
     public WebElement getSearchFld () {
         return findElement(searchfld);
     }
+    //*[@id="searchForm"]/input
 
     public String getRenamePlaylistSuccessMsg() {
         return findElement(renamePlaylistSuccessMsg).getText();

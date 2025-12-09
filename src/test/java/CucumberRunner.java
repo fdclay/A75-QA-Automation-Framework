@@ -8,9 +8,11 @@ import org.testng.annotations.DataProvider;
 //@CucumberOptions(features = {"src/test/resources/features/Login.feature"})
 //@CucumberOptions(features = {"src/test/resources/features/Logout.feature"})
 //@CucumberOptions(features = {"src/test/resources/features/InfoPanel.feature"})
-//@CucumberOptions(features = {"src/test/resources/features/CurrentQueue.feature"})
+//CucumberOptions(features = {"src/test/resources/features/CurrentQueue.feature"})
 //@CucumberOptions(features = {"src/test/resources/features/ProfilePreferences.feature"})
-@CucumberOptions(features = {"src/test/resources/features/HomePage.feature"})
+//@CucumberOptions(features = {"src/test/resources/features/HomePage.feature"})
+//@CucumberOptions(features = {"src/test/resources/features/UpdatePassword.feature"})
+@CucumberOptions(features = {"src/test/resources/features/NewPlaylist.feature"})
 
 public class CucumberRunner extends AbstractTestNGCucumberTests {
     private TestNGCucumberRunner testNGCucumberRunner;
