@@ -640,4 +640,61 @@ public class LoginStepDefinition {
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         //throw new PendingException();
     }
+
+    @And("I open Registration page")
+    public void iOpenRegistrationPage() {
+        // Write code here that turns the phrase above into concrete actions
+        driver.get("https://qa.koel.app/registration");
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        //throw new PendingException();
+    }
+
+    @And("I Register new email {string}")
+    public void iRegisterNewEmail(String email) {
+        // Write code here that turns the phrase above into concrete actions
+        RegistrationPage registrationPage = new RegistrationPage(driver);
+        registrationPage.provideRegistrationEmail(email);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        //throw new PendingException();
+    }
+
+    @And("I click on Registration Submit")
+    public void iClickOnRegistrationSubmit() {
+        // Write code here that turns the phrase above into concrete actions
+        RegistrationPage registrationPage = new RegistrationPage(driver);
+        registrationPage.clickRegistrationSubmitBtn();
+        //throw new PendingException();
+    }
+
+    @Then("I view Registration Message")
+    public void iViewRegistrationMessage() {
+        // Write code here that turns the phrase above into concrete actions
+        RegistrationPage registrationPage = new RegistrationPage(driver);
+        Assert.assertTrue(registrationPage.getRegistrationMsg().contains("Sorry"));
+        //throw new PendingException();
+    }
+
+    @Then("I view Confirmation Registration Message")
+    public void iViewConfirmationRegistrationMessage() {
+        // Write code here that turns the phrase above into concrete actions
+        RegistrationPage registrationPage = new RegistrationPage(driver);
+        Assert.assertTrue(registrationPage.getRegistrationConfMsg().contains("confirmation"));
+        //throw new PendingException();
+    }
+
+    @Then("I print Confirmation Message")
+    public void iPrintConfirmationMessage() {
+        // Write code here that turns the phrase above into concrete actions
+        RegistrationPage registrationPage = new RegistrationPage(driver);
+        registrationPage.printRegistrationConfMsg(registrationPage.getRegistrationConfMsg());
+        //throw new PendingException();
+    }
+
+    @Then("I print Error Message")
+    public void iPrintErrorMessage() {
+        // Write code here that turns the phrase above into concrete actions
+        RegistrationPage registrationPage = new RegistrationPage(driver);
+        registrationPage.printRegistrationErrorMsg(registrationPage.getRegistrationMsg());
+        //throw new PendingException();
+    }
 }
